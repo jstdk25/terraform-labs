@@ -22,10 +22,7 @@ tags = {
     Team        = "DevOps"
     Project     = "Webinar"
     }
-
-
 }
-
 
 
 resource "aws_key_pair" "nginex-server-ssh"{
@@ -60,8 +57,6 @@ resource "aws_security_group" "nginex-server-sg"{
 
     }
 }
-
-
 
 output "server_public_ip"{
     description = "Direccion IP Publica"
