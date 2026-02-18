@@ -5,11 +5,6 @@ provider "aws" {
 resource "aws_instance" "nginx-server"{
     ami             = "ami-05efc83cb5512477c"
     instance_type   = "t3.micro"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> release/v.3.0
 
     user_data = <<-EOF
                 #!/bin.bash
@@ -17,10 +12,6 @@ resource "aws_instance" "nginx-server"{
                 sudo systemctl enable nginx
                 sudo syttemctl start nginx
                 EOF
-<<<<<<< HEAD
-
->>>>>>> develop
-=======
 key_name =aws_key_pair.nginex-server-ssh.key_name
 vpc_security_group_ids = [aws_security_group.nginex-server-sg.id]
 }
@@ -56,5 +47,4 @@ resource "aws_security_group" "nginex-server-sg"{
         cidr_blocks = ["0.0.0.0/0"]
 
     }
->>>>>>> release/v.3.0
 }
