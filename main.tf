@@ -7,14 +7,26 @@ resource "aws_instance" "nginx-server"{
     instance_type   = "t3.micro"
 
     user_data = <<-EOF
-                #!/bin.bash
+                #!/bin/bash
                 sudo yum install -y nginx
                 sudo systemctl enable nginx
                 sudo syttemctl start nginx
                 EOF
 key_name =aws_key_pair.nginex-server-ssh.key_name
 vpc_security_group_ids = [aws_security_group.nginex-server-sg.id]
+
+tags = {
+    Name        = "nginx-server"
+    Enviroment  = "test"
+    Owner       = "frdsoto.25@gmail.com"
+    Team        = "DevOps"
+    Project     = "Webinar"
+    }
+
+
 }
+
+
 
 resource "aws_key_pair" "nginex-server-ssh"{
     key_name    = "nginex-server"
@@ -48,3 +60,25 @@ resource "aws_security_group" "nginex-server-sg"{
 
     }
 }
+
+
+
+output "server_public_ip"{
+    description = "Direccion IP Publica"
+    value       = aws_instance.nginx-server.public_ip
+    }
+
+output "server_public_dns"{
+    description = "Direccion IP Publica"
+    value       = aws_instance.nginx-server.public_dns
+    }
+
+output "Name"{
+    description = "Direccion IP Publica"
+    value       = aws_instance.nginx-server.tags.Name
+    }
+
+output "Owner"{
+    description = "Direccion IP Publica"
+    value       = aws_instance.nginx-server.tags.Owner
+    }
