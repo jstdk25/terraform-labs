@@ -3,8 +3,15 @@
 *.tfstate
 *.tfstate.backup
 <<<<<<< HEAD
+<<<<<<< HEAD
 .terraform.lock.hcl
 =======
 .terraform.lock.hcl
 .aws/
 >>>>>>> develop
+=======
+.terraform.lock.hcl
+.aws/
+nginex-server
+nginex-server.pub
+>>>>>>> release/v.3.0
