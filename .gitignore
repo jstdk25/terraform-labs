@@ -6,3 +6,5 @@
 .aws/
 nginex-server
 nginex-server.pub
+nginex-server.pub:Zone.Identifier
+nginex-server:Zone.Identifier
