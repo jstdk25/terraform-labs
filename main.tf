@@ -12,7 +12,10 @@ variable "type"{
     default    = "t3.micro"
 }
 
-
+variable "server_name"{
+    description = "Nombre del servidor Web"
+    default    = "web_server"
+}
 resource "aws_instance" "nginx-server"{
     ami             = var.ami_id
     instance_type   = var.type
@@ -28,7 +31,7 @@ key_name =aws_key_pair.nginex-server-ssh.key_name
 vpc_security_group_ids = [aws_security_group.nginex-server-sg.id]
 
 tags = {
-    Name        = "nginx-server"
+    Name        = "${var.server_name}"
     Enviroment  = "test"
     Owner       = "frdsoto.25@gmail.com"
     Team        = "DevOps"
@@ -38,13 +41,13 @@ tags = {
 
 
 resource "aws_key_pair" "nginex-server-ssh"{
-    key_name    = "nginex-server"
+    key_name    = "${var.server_name}-keys"
     public_key  = file("nginex-server.pub")
 
 }
 
 resource "aws_security_group" "nginex-server-sg"{
-    name        = "nginex-server"
+    name        = "${var.server_name}-sg"
     description = "Allow SSH and HTTP"
 
     ingress {
